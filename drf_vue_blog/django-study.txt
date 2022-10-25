@@ -1,0 +1,43 @@
+-----------------------------------------------------------------------------------------------------------------------
+1、windows创建虚拟环境
+python -m venv 虚拟环境名字
+2、进入env目录下执行active.bat激活虚拟环境
+3、fastapi安装
+安装所有fastapi依赖
+pip install "fastapi[all]"
+
+你也可以分开来安装。
+假如你想将应用程序部署到生产环境，你可能要执行以下操作：
+pip install fastapi
+
+并且安装uvicorn来作为服务器：
+pip install "uvicorn[standard]"
+
+4、pip依赖导出、安装
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+5、fastapi操作
+uvicorn服务器启动main模块
+uvicorn main:app --reload
+http://127.0.0.1:8000/docs
+http://127.0.0.1:8000/redoc
+
+-----------------------------------------------------------------------------------------------------------------------
+1、开始创建项目
+django-admin startproject 项目名
+2、运行web
+python manage.py runserver
+3、创建一个功能模块
+python manage.py startapp article
+4、数据库模型迁移
+对模型的更改创建新的迁移表
+python manage.py makemigrations
+应用迁移到数据库中
+python manage.py migrate
+5、创建管理员账号
+python manage.py createsuperuser
+然后再admin.py中注册model即可
+
+
+-----------------------------------------------------------------------------------------------------------------------
