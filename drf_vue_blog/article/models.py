@@ -6,7 +6,27 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+class Category(models.Model):
+    """文章分类"""
+    title = models.CharField(max_length=100)
+    created = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.title
+
+
 class Article(models.Model):
+    # 分类
+    category = models.ForeignKey(
+        Category,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='articles'
+    )
     author = models.ForeignKey(
         User,
         null=True,
