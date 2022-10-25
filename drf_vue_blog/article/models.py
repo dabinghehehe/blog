@@ -7,6 +7,12 @@ from django.utils import timezone
 
 
 class Article(models.Model):
+    author = models.ForeignKey(
+        User,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='articles'
+    )
     # 标题
     title = models.CharField(max_length=100)
     # 正文
@@ -15,6 +21,11 @@ class Article(models.Model):
     created = models.DateTimeField(default=timezone.now)
     # 更新时间
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        # ordering 指定模型返回的数据的排列顺序
+        # '-created' 表明数据应该以倒序排列
+        ordering = ('-created',)
 
     def __str__(self):
         return self.title
